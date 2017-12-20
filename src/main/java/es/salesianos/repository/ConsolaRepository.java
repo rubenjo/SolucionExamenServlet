@@ -22,7 +22,7 @@ public class ConsolaRepository {
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try {
-			preparedStatement=conn.prepareStatement("INSERT INTO CONSOLAS(consola,nom_empresa)"+"VALUES(?,?,?)");
+			preparedStatement=conn.prepareStatement("INSERT INTO CONSOLAS(consola,nom_empresa)"+"VALUES(?,?)");
 			preparedStatement.setString(1,consoleFormulario.getConsola());
 			preparedStatement.setString(2,consoleFormulario.getNom_Empresa());
 		} catch (SQLException e) {
