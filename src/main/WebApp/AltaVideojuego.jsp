@@ -10,7 +10,7 @@
 	<form action="welcome" method="post">
 		<span>titulo:</span> 
 		<input type="text" name="titulo"> <br/>
-		<span>edadRecomendad:</span>
+		<span>edadRecomendada:</span>
 		<input type="text" name="edadRecomendada"> <br/>
 		<span>nom_Consola:</span>
 		<input type="text" name="nom_Consola"> <br/>
