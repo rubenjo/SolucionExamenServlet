@@ -2,8 +2,8 @@ package es.salesianos.model;
 
 public class Consolas implements IEntity<String>{
 
-	String consola;
-	String nom_Empresa;
+	public String consola;
+	public String nom_Empresa;
 	
 	public String getConsola() {
 		return consola;
