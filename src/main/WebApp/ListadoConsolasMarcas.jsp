@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Lista Consolas Marca</title>
 </head>
 <body>
 	<form action="cargarListado" method="post">
@@ -21,9 +21,10 @@
 		<tbody>
 			<c:forEach var="consola" items="${consolas}">
 				<tr>
-					<td><c:out value="${consolas.consola}" /></td>
-					<td><c:out value="${consolas.nom_Empresa}" /></td>
-					<td><a href="/delete?consola=${consolas.consola}">borrar</a></td>
+					<td><c:out value="${consola.consola}" /></td>
+					<td><c:out value="${consola.nom_Empresa}" /></td>
+					<td><a href="/delete?consola=${consola.consola}">borrar</a></td>
+					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -31,7 +32,7 @@
 
 	<select>
 		<c:forEach var="consola" items="${consolas}">
-			<option value="${consolas.consola}">${consolas.consola}</option>
+			<option value="${consola.consola}">${consola.consola}</option>
 		</c:forEach>
 	</select>
 </body>

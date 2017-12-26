@@ -21,21 +21,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="titulo" items="${games}">
+			<c:forEach var="game" items="${games}">
 				<tr>
-					<td><c:out value="${games.titulo}" /></td>
-					<td><c:out value="${games.edadRecomendada}" /></td>
-					<td><c:out value="${games.fechaLanzamiento}" /></td>
-					<td><c:out value="${games.nom_Consola}" /></td>
-					<td><a href="/delete?titulo=${games.titulo}">borrar</a></td>
+					<td><c:out value="${game.titulo}" /></td>
+					<td><c:out value="${game.edadRecomendada}" /></td>
+					<td><c:out value="${game.fechaLanzamiento}" /></td>
+					<td><c:out value="${game.nom_Consola}" /></td>
+					<td><a href="/delete?titulo=${game.titulo}">borrar</a></td>
+					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
 	<select>
-		<c:forEach var="titulo" items="${games}">
-			<option value="${games.titulo}">${games.titulo}</option>
+		<c:forEach var="game" items="${games}">
+			<option value="${game.titulo}">${game.titulo}</option>
 		</c:forEach>
 	</select>
 </body>

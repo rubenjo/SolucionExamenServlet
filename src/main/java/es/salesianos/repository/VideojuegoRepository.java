@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.sql.Date;
 
 import es.salesianos.connection.AbstractConnection;
+import es.salesianos.model.Consolas;
 import es.salesianos.model.Videojuegos;
 
 public class VideojuegoRepository {
@@ -54,19 +55,19 @@ public class VideojuegoRepository {
 		}
 	}
 	
-	public Optional<Videojuegos> search(Videojuegos games){
+	public Optional<Consolas> search(Consolas consola){
 		PreparedStatement preparedStatement=null;
 		ResultSet resultSet=null;
 		Connection conn=connection.open(jdbcUrl);
 		Videojuegos juegos=new Videojuegos();
 		try{
-			preparedStatement=conn.prepareStatement("SELECT * FROM VIDEOJUEGOS WHERE titulo=?");
-			preparedStatement.setString(1, games.getTitulo());
+			preparedStatement=conn.prepareStatement("SELECT * FROM VIDEOJUEGOS INNER JOIN CONSOLAS ON VIDEOJUEGOS.nom_Consola=CONSOLA.consola WHERE CONSOLA.nom_Empresa=?");
+			preparedStatement.setString(1, consola.getNom_Empresa());
 			resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()){
+				juegos.setTitulo(resultSet.getString("titulo"));
 				juegos.setEdadRecomendada(resultSet.getString("edadRecomendada"));
-				juegos.setFechaLanzamiento(resultSet.getDate("fechaLanzamiento"));
-				juegos.setNom_Consola(resultSet.getString("nom_Consola"));
+				juegos.setFechaLanzamiento(resultSet.getDate("fechaLanzamiento"));	
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

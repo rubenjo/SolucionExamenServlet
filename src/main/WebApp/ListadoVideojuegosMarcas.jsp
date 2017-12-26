@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listado Consolas</title>
+<title>Lista Videojuegos Marcas</title>
 </head>
 <body>
 	<form action="cargarListado" method="post">
@@ -14,16 +14,18 @@
 	<table border="1">
 		<thead>
 			<tr>
+				<td>Titulo</td>
 				<td>Consola</td>
 				<td>Empresa</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="consola" items="${consolas}">
+			<c:forEach var="videojuego" var="consola" items="${videojuegos}">
 				<tr>
-					<td><c:out value="${consola.consola}" /></td>
+					<td><c:out value="${videojuego.titulo}" /></td>
+					<td><c:out value="${videojuego.nom_Consola}" /></td>
 					<td><c:out value="${consola.nom_Empresa}" /></td>
-					<td><a href="/delete?consola=${consola.consola}">borrar</a></td>
+					<td><a href="/delete?consola=${videojuego.titulo}">borrar</a></td>
 					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
@@ -31,8 +33,8 @@
 	</table>
 
 	<select>
-		<c:forEach var="consola" items="${consolas}">
-			<option value="${consola.consola}">${consola.consola}</option>
+		<c:forEach var="videojuego" items="${videojuegos}">
+			<option value="${videojuego.titulo}">${videojuego.titulo}</option>
 		</c:forEach>
 	</select>
 </body>
