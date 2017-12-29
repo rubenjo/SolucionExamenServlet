@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.salesianos.model.Consolas;
+import es.salesianos.model.Videojuegos;
 import es.salesianos.repository.VideojuegoRepository;
 
 public class ListadoVideojuegosMarca extends HttpServlet{
@@ -19,7 +20,7 @@ public class ListadoVideojuegosMarca extends HttpServlet{
 	Consolas consola=new Consolas();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Optional<Consolas> searchAllMarcs=juegosRepository.search(consola);
+		Optional<Videojuegos> searchAllMarcs=juegosRepository.search(consola);
 		req.getSession().setAttribute("consoles", searchAllMarcs);
 		redirect(req,resp);
 	}

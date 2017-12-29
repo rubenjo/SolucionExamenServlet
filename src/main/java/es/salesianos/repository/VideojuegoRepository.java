@@ -55,7 +55,7 @@ public class VideojuegoRepository {
 		}
 	}
 	
-	public Optional<Consolas> search(Consolas consola){
+	public Optional<Videojuegos> search(Consolas consola){
 		PreparedStatement preparedStatement=null;
 		ResultSet resultSet=null;
 		Connection conn=connection.open(jdbcUrl);
