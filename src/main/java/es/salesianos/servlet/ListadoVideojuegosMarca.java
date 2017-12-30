@@ -28,5 +28,6 @@ public class ListadoVideojuegosMarca extends HttpServlet{
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ListadoVideojuegosMarcas.jsp");
 		dispatcher.forward(req, resp);
+		req.getParameter("edadRecomendada");
 	}
 }
