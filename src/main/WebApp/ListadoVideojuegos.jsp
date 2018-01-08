@@ -7,7 +7,7 @@
 <title>Listado videojuegos</title>
 </head>
 <body>
-	<form action="cargarListado" method="post">
+	<form action="listadoVideojuegos" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 

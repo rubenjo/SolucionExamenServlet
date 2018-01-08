@@ -35,15 +35,57 @@
 	
 	<servlet>
 		<servlet-name>ListadoConsolaServlet</servlet-name>
-		<servlet-class>es.salesianos.servlet.AltaConsolaServlet</servlet-class>
+		<servlet-class>es.salesianos.servlet.ListadoConsolaServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ListadoConsolaServlet</servlet-name>
-		<url-pattern>/altaConsola</url-pattern>
+		<url-pattern>listadoConsola</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>AltaConsola.jsp</welcome-file>
+		<welcome-file>ListadoConsola.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>ListadoVideojuegoServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListadoVideojuegoServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ListadoVideojuegoServlet</servlet-name>
+		<url-pattern>listadoVideojuegos</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>ListadoVideojuegos.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>ListadoConsolaMarcaServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListadoConsolaMarcaServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ListadoConsolaMarcaServlet</servlet-name>
+		<url-pattern>listadoConsolaMarca</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>ListadoConsolasMarcas.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>ListadoVideojuegosMarcaServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListadoVideojuegosMarcaServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ListadoVideojuegosMarcaServlet</servlet-name>
+		<url-pattern>listadoVideojuegosMarca</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>ListadoVideojuegosMarcas.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

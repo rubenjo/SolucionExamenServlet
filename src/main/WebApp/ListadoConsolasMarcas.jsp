@@ -7,7 +7,7 @@
 <title>Lista Consolas Marca</title>
 </head>
 <body>
-	<form action="cargarListado" method="post">
+	<form action="listadoConsolaMarca" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 

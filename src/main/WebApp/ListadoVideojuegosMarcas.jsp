@@ -7,7 +7,7 @@
 <title>Lista Videojuegos Marcas</title>
 </head>
 <body>
-	<form action="cargarListado" method="post">
+	<form action="listadoVideojuegosMarca" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 
