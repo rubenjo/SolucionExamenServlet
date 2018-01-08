@@ -7,7 +7,7 @@
 <title>Listado Consolas</title>
 </head>
 <body>
-	<form action="cargarListado" method="post">
+	<form action="listadoConsola" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 

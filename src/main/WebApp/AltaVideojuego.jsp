@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="welcome" method="post">
+	<form action="altaVideojuego" method="post">
 		<span>titulo:</span> 
 		<input type="text" name="titulo"> <br/>
 		<span>edadRecomendada:</span>

@@ -7,7 +7,7 @@
 <title>Registro Consola</title>
 </head>
 <body>
-	<form action="register" method="post">
+	<form action="altaConsola" method="post">
 		<span>consola:</span> 
 		<input type="text" name="consola"> <br/>
 		<span>nom_Empresa:</span> 
