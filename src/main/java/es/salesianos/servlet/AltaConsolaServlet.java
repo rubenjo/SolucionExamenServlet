@@ -9,25 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.salesianos.model.Consolas;
-import es.salesianos.repository.ConsolaRepository;
+import es.salesianos.model.Console;
+import es.salesianos.repository.ConsoleRepository;
 
-public class AltaConsolaServlet extends HttpServlet{
-	
-	ConsolaRepository repository=new ConsolaRepository();
+public class AltaConsolaServlet extends HttpServlet {
+
+	ConsoleRepository repository = new ConsoleRepository();
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Console> listAllConsoles=repository.listAllConsoles();
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		List<Console> listAllConsoles = repository.listAllConsoles();
 		req.getSession().setAttribute("consoles", listAllConsoles);
-		redirect(req,resp);
+		redirect(req, resp);
 	}
 
-	protected void redirect(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/AltaConsola.jsp");
+	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher("/AltaConsola.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
-	
 
 }

@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.salesianos.model.Consolas;
-import es.salesianos.model.Videojuegos;
-import es.salesianos.repository.VideojuegoRepository;
+import es.salesianos.model.Console;
+import es.salesianos.model.Videogame;
+import es.salesianos.repository.VideogameRepository;
 
 public class ListadoVideojuegosMarca extends HttpServlet{
 	
-	VideojuegoRepository juegosRepository=new VideojuegoRepository();
+	VideogameRepository juegosRepository=new VideogameRepository();
 	
-	Console consola=new Console();
+	Console console=new Console();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Optional<Videogame> searchAllMarcs=juegosRepository.search(consola);
+		Optional<Videogame> searchAllMarcs=juegosRepository.search(console);
 		req.getSession().setAttribute("consoles", searchAllMarcs);
 		redirect(req,resp);
 	}

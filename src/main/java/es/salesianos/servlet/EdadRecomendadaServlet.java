@@ -9,29 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.salesianos.model.Videojuegos;
-import es.salesianos.repository.VideojuegoRepository;
+import es.salesianos.model.Videogame;
+import es.salesianos.repository.VideogameRepository;
 
+public class EdadRecomendadaServlet extends HttpServlet {
 
-public class EdadRecomendadaServlet extends HttpServlet{
-	
-	VideojuegoRepository gamesRepositorio=new VideojuegoRepository();
-	
-	Videogame games=new Videogame();
+	VideogameRepository gamesRepositorio = new VideogameRepository();
+
+	Videogame games = new Videogame();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		List<Videogame> listAllAges=gamesRepositorio.listAllGames();
+		List<Videogame> listAllAges = gamesRepositorio.listAllGames();
 		req.getSession().setAttribute("games", listAllAges);
-		redirect(req,resp);
-		
+		redirect(req, resp);
+
 	}
-	protected void redirect(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ListadoEdadServlet.jsp");
+
+	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher("/ListadoEdadServlet.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
-	
 
 }

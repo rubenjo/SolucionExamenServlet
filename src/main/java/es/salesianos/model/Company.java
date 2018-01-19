@@ -1,4 +1,4 @@
-package src.main.java.es.salesianos.model;
+package es.salesianos.model;
 
 import java.util.Date;
 
