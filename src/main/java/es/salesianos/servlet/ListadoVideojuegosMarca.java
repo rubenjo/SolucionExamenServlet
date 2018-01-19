@@ -17,10 +17,10 @@ public class ListadoVideojuegosMarca extends HttpServlet{
 	
 	VideojuegoRepository juegosRepository=new VideojuegoRepository();
 	
-	Consolas consola=new Consolas();
+	Console consola=new Console();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Optional<Videojuegos> searchAllMarcs=juegosRepository.search(consola);
+		Optional<Videogame> searchAllMarcs=juegosRepository.search(consola);
 		req.getSession().setAttribute("consoles", searchAllMarcs);
 		redirect(req,resp);
 	}

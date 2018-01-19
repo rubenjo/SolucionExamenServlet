@@ -1,8 +1,8 @@
-package es.salesianos.model;
+package src.main.java.es.salesianos.model;
 
 import java.util.Date;
 
-public class Empresas implements IEntity<String>{
+public class Company implements IEntity<String>{
 
 	String empresa;
 	Date fechaCreacion;

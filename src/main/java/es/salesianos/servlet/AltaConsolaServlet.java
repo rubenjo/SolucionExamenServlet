@@ -18,7 +18,7 @@ public class AltaConsolaServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Consolas> listAllConsoles=repository.listAllConsoles();
+		List<Console> listAllConsoles=repository.listAllConsoles();
 		req.getSession().setAttribute("consoles", listAllConsoles);
 		redirect(req,resp);
 	}

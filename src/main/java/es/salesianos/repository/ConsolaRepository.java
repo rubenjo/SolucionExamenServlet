@@ -18,7 +18,7 @@ public class ConsolaRepository {
 	
 	private static final String jdbcUrl="jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 	
-	public void insert(Consolas consoleFormulario){
+	public void insert(Console consoleFormulario){
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try {
@@ -34,7 +34,7 @@ public class ConsolaRepository {
 		connection.close(conn);
 	}
 	
-	public void update(Consolas consoleFormulario){
+	public void update(Console consoleFormulario){
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try{
@@ -51,11 +51,11 @@ public class ConsolaRepository {
 		connection.close(conn);
 	}
 	
-	public Optional<Consolas> search(Consolas console){
+	public Optional<Console> search(Console console){
 		PreparedStatement preparedStatement=null;
 		ResultSet resultSet=null;
 		Connection conn=null;
-		Consolas maquineta=new Consolas();
+		Console maquineta=new Console();
 		try{		
 			conn=connection.open(jdbcUrl);
 			preparedStatement=conn.prepareStatement("SELECT * FROM CONSOLAS WHERE consola=?");
@@ -75,12 +75,12 @@ public class ConsolaRepository {
 		return Optional.ofNullable(maquineta);
 	}
 	
-	public List<Consolas> listAllConsoles(){
-		List<Consolas> listaConsolas=new ArrayList<Consolas>();
+	public List<Console> listAllConsoles(){
+		List<Console> listaConsolas=new ArrayList<Console>();
 		ResultSet resultSet=null;
 		Connection conn=null;
 		Statement statement=null;
-		Consolas maquineta=new Consolas();
+		Console maquineta=new Console();
 		try{
 			conn=connection.open(jdbcUrl);
 			statement=conn.createStatement();

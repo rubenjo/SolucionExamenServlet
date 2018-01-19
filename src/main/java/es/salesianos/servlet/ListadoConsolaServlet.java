@@ -18,7 +18,7 @@ public class ListadoConsolaServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Consolas> listAllConsoles=consoleRepository.listAllConsoles();
+		List<Console> listAllConsoles=consoleRepository.listAllConsoles();
 		req.getSession().setAttribute("consoles", listAllConsoles);
 		redirect(req,resp);
 	}

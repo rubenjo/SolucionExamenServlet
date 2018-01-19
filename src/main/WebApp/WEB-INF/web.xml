@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>Archetype Created  Web Application</display-name>
+	<display-name>Archetype Created Web Application</display-name>
 
 	<servlet>
 		<servlet-name>AltaConsolaServlet</servlet-name>
@@ -18,7 +18,7 @@
 	<welcome-file-list>
 		<welcome-file>AltaConsola.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>AltaVideojuegosServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.AltaVideojuegosServlet</servlet-class>
@@ -32,7 +32,7 @@
 	<welcome-file-list>
 		<welcome-file>AltaVideojuego.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>ListadoConsolaServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.ListadoConsolaServlet</servlet-class>
@@ -46,7 +46,7 @@
 	<welcome-file-list>
 		<welcome-file>ListadoConsola.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>ListadoVideojuegoServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.ListadoVideojuegoServlet</servlet-class>
@@ -60,7 +60,7 @@
 	<welcome-file-list>
 		<welcome-file>ListadoVideojuegos.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>ListadoConsolaMarcaServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.ListadoConsolaMarcaServlet</servlet-class>
@@ -74,7 +74,7 @@
 	<welcome-file-list>
 		<welcome-file>ListadoConsolasMarcas.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>ListadoVideojuegosMarcaServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.ListadoVideojuegosMarcaServlet</servlet-class>
@@ -88,7 +88,7 @@
 	<welcome-file-list>
 		<welcome-file>ListadoVideojuegosMarcas.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>EdadRecomendadaServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.EdadRecomendadaServlet</servlet-class>

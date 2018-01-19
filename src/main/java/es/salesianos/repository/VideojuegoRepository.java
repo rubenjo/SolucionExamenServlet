@@ -19,7 +19,7 @@ public class VideojuegoRepository {
 	
 	private static final String jdbcUrl="jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 	
-	public void insertar(Videojuegos videogamesFormulario){
+	public void insertar(Videogame videogamesFormulario){
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try{
@@ -37,7 +37,7 @@ public class VideojuegoRepository {
 		}
 	}
 	
-	public void update(Videojuegos videogamesFormulario){
+	public void update(Videogame videogamesFormulario){
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try{
@@ -55,11 +55,11 @@ public class VideojuegoRepository {
 		}
 	}
 	
-	public Optional<Videojuegos> search(Consolas consola){
+	public Optional<Videogame> search(Console consola){
 		PreparedStatement preparedStatement=null;
 		ResultSet resultSet=null;
 		Connection conn=connection.open(jdbcUrl);
-		Videojuegos juegos=new Videojuegos();
+		Videogame juegos=new Videogame();
 		try{
 			preparedStatement=conn.prepareStatement("SELECT * FROM VIDEOJUEGOS INNER JOIN CONSOLAS ON VIDEOJUEGOS.nom_Consola=CONSOLA.consola WHERE CONSOLA.nom_Empresa=?");
 			preparedStatement.setString(1, consola.getNom_Empresa());
@@ -79,11 +79,11 @@ public class VideojuegoRepository {
 		return Optional.ofNullable(juegos);
 	}
 	
-	public List<Videojuegos> listAllGames(){
+	public List<Videogame> listAllGames(){
 		ResultSet resultSet=null;
 		Statement statement=null;
 		Connection conn=connection.open(jdbcUrl);
-		Videojuegos juegos=new Videojuegos();
+		Videogame juegos=new Videogame();
 		try{
 			statement=conn.createStatement();
 			resultSet=statement.executeQuery("SELECT * FROM VIDEOJUEGOS");

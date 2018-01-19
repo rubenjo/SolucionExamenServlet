@@ -10,7 +10,6 @@
 	<form action="listadoVideojuegosMarca" method="post">
 		<input type="submit" value="ver listado">
 	</form>
-
 	<table border="1">
 		<thead>
 			<tr>
@@ -31,7 +30,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
 	<select>
 		<c:forEach var="videojuego" items="${videojuegos}">
 			<option value="${videojuego.titulo}">${videojuego.titulo}</option>

@@ -10,7 +10,6 @@
 	<form action="listadoConsolaMarca" method="post">
 		<input type="submit" value="ver listado">
 	</form>
-
 	<table border="1">
 		<thead>
 			<tr>
@@ -29,7 +28,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
 	<select>
 		<c:forEach var="consola" items="${consolas}">
 			<option value="${consola.consola}">${consola.consola}</option>

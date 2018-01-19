@@ -18,7 +18,7 @@ public class ListadoVideojuegoServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Videojuegos> listAllGames=gameRepository.listAllGames();
+		List<Videogame> listAllGames=gameRepository.listAllGames();
 		req.getSession().setAttribute("consoles", listAllGames);
 		redirect(req,resp);
 	}

@@ -13,11 +13,9 @@
 </head>
 <body>
     ¿Esta usted seguro de borrar el elemento?
-    
 	<form action="delete" method="post">
 		<input type="text" value="${titulo}">
 		<input type="submit" value="Si">
 	</form>
-
 </body>
 </html>

@@ -17,7 +17,7 @@ public class EmpresaRepository {
 	AbstractConnection connection;
 	private static final String jdbcUrl="jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 	
-	public void insert(Empresas empresaFormulario){
+	public void insert(Company empresaFormulario){
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try{
@@ -33,7 +33,7 @@ public class EmpresaRepository {
 		connection.close(conn);
 	}
 	
-	public void update(Empresas empresaFormulario){
+	public void update(Company empresaFormulario){
 		Connection conn=connection.open(jdbcUrl);
 		PreparedStatement preparedStatement=null;
 		try{
@@ -49,11 +49,11 @@ public class EmpresaRepository {
 		connection.close(conn);
 	}
 	
-	public Optional<Empresas> search(Empresas empresa){
+	public Optional<Company> search(Company empresa){
 		PreparedStatement preparedStatement=null;
 		ResultSet resultSet=null;
 		Connection conn=connection.open(jdbcUrl);
-		Empresas company=new Empresas();
+		Company company=new Company();
 		try{
 			preparedStatement=conn.prepareStatement("SELECT * FROM EMPRESAS WHERE empresa=?");
 			preparedStatement.setString(1, empresa.getEmpresa());
@@ -72,11 +72,11 @@ public class EmpresaRepository {
 		return Optional.ofNullable(company);
 	}
 	
-	public List<Empresas> listAllCompanies(){
+	public List<Company> listAllCompanies(){
 		ResultSet resultSet=null;
 		Statement statement=null;
 		Connection conn=connection.open(jdbcUrl);
-		Empresas companies=new Empresas();
+		Company companies=new Company();
 		try{
 			statement=conn.createStatement();
 			resultSet=statement.executeQuery("SELECT * FROM VIDEOJUEGOS");

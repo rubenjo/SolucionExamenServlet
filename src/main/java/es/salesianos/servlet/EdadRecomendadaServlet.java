@@ -17,12 +17,12 @@ public class EdadRecomendadaServlet extends HttpServlet{
 	
 	VideojuegoRepository gamesRepositorio=new VideojuegoRepository();
 	
-	Videojuegos games=new Videojuegos();
+	Videogame games=new Videogame();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		List<Videojuegos> listAllAges=gamesRepositorio.listAllGames();
+		List<Videogame> listAllAges=gamesRepositorio.listAllGames();
 		req.getSession().setAttribute("games", listAllAges);
 		redirect(req,resp);
 		

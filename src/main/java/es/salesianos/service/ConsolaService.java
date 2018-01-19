@@ -11,7 +11,7 @@ public class ConsolaService implements Service{
 	ConsolaAssembler assembler=new ConsolaAssembler();
 	private ConsolaRepository repository=new ConsolaRepository();
 	public void createNewConsoleFromRequest(HttpServletRequest request){
-		Consolas console=assembler.createConsolaFromRequest(request);
+		Console console=assembler.createConsolaFromRequest(request);
 		
 		if(!repository.search(console).isPresent()){
 			repository.insert(console);

@@ -12,11 +12,11 @@ public interface ConnectionManager {
 	
 	public void close(Connection conn);
 	
-	void insert(Consolas consola);
+	void insert(Console consola);
 	
-	Optional<Consolas> search(Consolas consola);
+	Optional<Console> search(Console consola);
 	
-	void update(Consolas consola);
+	void update(Console consola);
 	
-	List<Consolas> listAllConsoles();
+	List<Console> listAllConsoles();
 }

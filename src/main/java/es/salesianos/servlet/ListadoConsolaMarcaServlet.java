@@ -16,11 +16,11 @@ public class ListadoConsolaMarcaServlet extends HttpServlet{
 	
 	ConsolaRepository consoleRepository=new ConsolaRepository();
 	
-	Consolas empresa = new Consolas();
+	Console empresa = new Console();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Optional<Consolas> listAllMarcs=consoleRepository.search(empresa);
+		Optional<Console> listAllMarcs=consoleRepository.search(empresa);
 		req.getSession().setAttribute("consoles", listAllMarcs);
 		redirect(req,resp);
 	}

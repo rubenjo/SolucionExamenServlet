@@ -18,7 +18,7 @@ public class AltaVideojuegosServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Videojuegos> listAllGames=repository.listAllGames();
+		List<Videogame> listAllGames=repository.listAllGames();
 		req.getSession().setAttribute("games", listAllGames);
 		redirect(req,resp);
 	}
