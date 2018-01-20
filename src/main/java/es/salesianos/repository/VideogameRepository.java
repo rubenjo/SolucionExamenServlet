@@ -23,15 +23,11 @@ public class VideogameRepository {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("INSERT INTO VIDEOJUEGOS(titulo,edadRecomendada,nom_Consola,fechaLanzamiento)"
-							+ "VALUES(?,?,?,?)");
+			preparedStatement = conn.prepareStatement("INSERT INTO VIDEOGAMES(tittle,age,nomConsole,date) VALUES(?,?,?,?)");
 			preparedStatement.setString(1, videogamesFormulario.getTittle());
 			preparedStatement.setString(2, videogamesFormulario.getAge());
-			preparedStatement
-					.setString(3, videogamesFormulario.getNomConsole());
-			preparedStatement.setDate(4, new Date(videogamesFormulario
-					.getDate().getTime()));
+			preparedStatement.setString(3, videogamesFormulario.getNomConsole());
+			preparedStatement.setDate(4, new Date(videogamesFormulario.getDate().getTime()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -45,14 +41,10 @@ public class VideogameRepository {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn
-					.prepareStatement("UPDATE VIDEOJUEGOS"
-							+ " SET edadRecomendada=?, nom_Consola=?, fechaLanzamiento=? WHERE titulo=?");
+			preparedStatement = conn.prepareStatement("UPDATE VIDEOGAMES SET age=?, nomConsole=?, date=? WHERE tittle=?");
 			preparedStatement.setString(1, videogamesFormulario.getAge());
-			preparedStatement
-					.setString(2, videogamesFormulario.getNomConsole());
-			preparedStatement.setDate(3, new Date(videogamesFormulario
-					.getDate().getTime()));
+			preparedStatement.setString(2, videogamesFormulario.getNomConsole());
+			preparedStatement.setDate(3, new Date(videogamesFormulario.getDate().getTime()));
 			preparedStatement.setString(4, videogamesFormulario.getTittle());
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,20 +55,19 @@ public class VideogameRepository {
 		}
 	}
 
-	public Optional<Videogame> search(Console consola) {
+	public Optional<Videogame> search(Console console) {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		Connection conn = connection.open(jdbcUrl);
-		Videogame juegos = new Videogame();
+		Videogame games = new Videogame();
 		try {
-			preparedStatement = conn
-					.prepareStatement("SELECT * FROM VIDEOJUEGOS INNER JOIN CONSOLAS ON VIDEOJUEGOS.nom_Consola=CONSOLA.consola WHERE CONSOLA.nom_Empresa=?");
-			preparedStatement.setString(1, consola.getNom_Empresa());
+			preparedStatement = conn.prepareStatement("SELECT * FROM VIDEOGAMES INNER JOIN CONSOLES ON VIDEOGAMES.nomConsole=CONSOLES.console WHERE CONSOLES.nomCompany=?");
+			preparedStatement.setString(1, console.getNomCompany());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				juegos.setTittle(resultSet.getString("titulo"));
-				juegos.setAge(resultSet.getString("edadRecomendada"));
-				juegos.setDate(resultSet.getDate("fechaLanzamiento"));
+				games.setTittle(resultSet.getString("tittle"));
+				games.setAge(resultSet.getString("age"));
+				games.setDate(resultSet.getDate("date"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -85,22 +76,22 @@ public class VideogameRepository {
 			connection.close(conn);
 			connection.close(preparedStatement);
 		}
-		return Optional.ofNullable(juegos);
+		return Optional.ofNullable(games);
 	}
 
 	public List<Videogame> listAllGames() {
 		ResultSet resultSet = null;
 		Statement statement = null;
 		Connection conn = connection.open(jdbcUrl);
-		Videogame juegos = new Videogame();
+		Videogame games = new Videogame();
 		try {
 			statement = conn.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM VIDEOJUEGOS");
 			while (resultSet.next()) {
-				juegos.setTittle(resultSet.getString("titulo"));
-				juegos.setAge(resultSet.getString("edadRecomendada"));
-				juegos.setDate(resultSet.getDate("fechaLanzamiento"));
-				juegos.setNomConsole(resultSet.getString("nom_Consola"));
+				games.setTittle(resultSet.getString("titulo"));
+				games.setAge(resultSet.getString("edadRecomendada"));
+				games.setDate(resultSet.getDate("fechaLanzamiento"));
+				games.setNomConsole(resultSet.getString("nom_Consola"));
 			}
 
 		} catch (SQLException e) {

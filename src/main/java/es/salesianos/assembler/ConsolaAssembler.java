@@ -6,9 +6,9 @@ import es.salesianos.model.Console;
 
 public class ConsolaAssembler {
 	public Console createConsolaFromRequest(HttpServletRequest request) {
-		Console consola = new Console();
-		consola.setConsola(request.getParameter("consola"));
-		consola.setNom_Empresa(request.getParameter("nom_Empresa"));
-		return consola;
+		Console console = new Console();
+		console.setConsole(request.getParameter("consola"));
+		console.setNomCompany(request.getParameter("nom_Empresa"));
+		return console;
 	}
 }

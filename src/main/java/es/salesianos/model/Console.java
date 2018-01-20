@@ -5,28 +5,28 @@ public class Console implements IEntity<String>{
 	public String console;
 	public String nomCompany;
 	
-	public String getConsola() {
+	public String getConsole() {
 		return console;
 	}
 	
-	public void setConsola(String console) {
+	public void setConsole(String console) {
 		this.console = console;
 	}
 	
-	public String getNom_Empresa() {
+	public String getNomCompany() {
 		return nomCompany;
 	}
 	
-	public void setNom_Empresa(String nomCompany) {
+	public void setNomCompany(String nomCompany) {
 		this.nomCompany = nomCompany;
 	}
 
 	public String getId() {
-		return getConsola();
+		return getConsole();
 	}
 
 	public void setId(String id) {
-		setConsola(id);
+		setConsole(id);
 		
 	}
 	

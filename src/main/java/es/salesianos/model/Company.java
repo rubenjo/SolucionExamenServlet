@@ -4,33 +4,31 @@ import java.util.Date;
 
 public class Company implements IEntity<String>{
 
-	String empresa;
-	Date fechaCreacion;
+	String company;
+	Date dateCreation;
 	
-	public String getEmpresa() {
-		return empresa;
+	public String getCompany() {
+		return company;
 	}
 	
-	public void setEmpresa(String empresa) {
-		this.empresa = empresa;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 	
-	public Date getFechaCreacion() {
-		return fechaCreacion;
+	public Date getDateCreation() {
+		return dateCreation;
 	}
 	
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+	public void setDateCreation(Date dateCreation) {
+		this.dateCreation = dateCreation;
 	}
 
 	public String getId() {
-		// TODO Auto-generated method stub
-		return getEmpresa();
+		return getCompany();
 	}
 
 	public void setId(String id) {
-		// TODO Auto-generated method stub
-		setEmpresa(id);
+		setCompany(id);
 	}
 	
 }
