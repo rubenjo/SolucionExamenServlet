@@ -18,13 +18,13 @@ public class ConsoleRepository {
 
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
-	public void insert(Console consoleFormulario) {
+	public void insert(Console consoleFormulary) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLES(console,nomCompany) VALUES(?,?)");
-			preparedStatement.setString(1, consoleFormulario.getConsole());
-			preparedStatement.setString(2, consoleFormulario.getNomCompany());
+			preparedStatement.setString(1, consoleFormulary.getConsole());
+			preparedStatement.setString(2, consoleFormulary.getCompanyName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -34,14 +34,14 @@ public class ConsoleRepository {
 		connection.close(conn);
 	}
 
-	public void update(Console consoleFormulario) {
+	public void update(Console consoleFormulary) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("UPDATE CONSOLES SET console=?, nomCompany=? WHERE id=?");
-			preparedStatement.setString(1, consoleFormulario.getConsole());
-			preparedStatement.setString(2, consoleFormulario.getNomCompany());
-			preparedStatement.setString(3, consoleFormulario.getId());
+			preparedStatement.setString(1, consoleFormulary.getConsole());
+			preparedStatement.setString(2, consoleFormulary.getCompanyName());
+			preparedStatement.setString(3, consoleFormulary.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -80,16 +80,16 @@ public class ConsoleRepository {
 		ResultSet resultSet = null;
 		Connection conn = null;
 		Statement statement = null;
-		Console maquineta = new Console();
+		Console console = new Console();
 		try {
 			conn = connection.open(jdbcUrl);
 			statement = conn.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM CONSOLES");
 
 			while (resultSet.next()) {
-				maquineta.setConsole(resultSet.getString("console"));
-				maquineta.setNomCompany(resultSet.getString("nomCompany"));
-				listaConsolas.add(maquineta);
+				console.setConsole(resultSet.getString("console"));
+				console.setCompanyName(resultSet.getString("nomCompany"));
+				listaConsolas.add(console);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class Videogame implements IEntity<String>{
 
-	String tittle;
-	String age;
-	Date date;
-	String nomConsole;
+	private String tittle;
+	private String age;
+	private Date date;
+	private String nomConsole;
 	
 	public String getTittle() {
 		return tittle;

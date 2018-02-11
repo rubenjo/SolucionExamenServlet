@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Company implements IEntity<String>{
 
-	String company;
-	Date dateCreation;
+	private String company;
+	private Date dateCreation;
 	
 	public String getCompany() {
 		return company;

@@ -17,13 +17,13 @@ public class CompanyRepository {
 	AbstractConnection connection;
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
-	public void insert(Company empresaFormulario) {
+	public void insert(Company companyFormulary) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("INSERT INTO COMPANIES (company,dateCreation) VALUES(?,?)");
-			preparedStatement.setString(1, empresaFormulario.getCompany());
-			preparedStatement.setDate(2, new Date(empresaFormulario.getDateCreation().getTime()));
+			preparedStatement.setString(1, companyFormulary.getCompany());
+			preparedStatement.setDate(2, new Date(companyFormulary.getDateCreation().getTime()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -33,13 +33,13 @@ public class CompanyRepository {
 		connection.close(conn);
 	}
 
-	public void update(Company empresaFormulario) {
+	public void update(Company companyFormulary) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("UPDATE COMPANIES SET dateCreation=? WHERE company=?");
-			preparedStatement.setDate(1, new Date(empresaFormulario.getDateCreation().getTime()));
-			preparedStatement.setString(2, empresaFormulario.getCompany());
+			preparedStatement.setDate(1, new Date(companyFormulary.getDateCreation().getTime()));
+			preparedStatement.setString(2, companyFormulary.getCompany());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -76,13 +76,13 @@ public class CompanyRepository {
 		ResultSet resultSet = null;
 		Statement statement = null;
 		Connection conn = connection.open(jdbcUrl);
-		Company companies = new Company();
+		Company company = new Company();
 		try {
 			statement = conn.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM VIDEOJUEGOS");
 			while (resultSet.next()) {
-				companies.setCompany(resultSet.getString("empresa"));
-				companies.setDateCreation(resultSet.getDate("fechaCreacion"));
+				company.setCompany(resultSet.getString("empresa"));
+				company.setDateCreation(resultSet.getDate("fechaCreacion"));
 			}
 
 		} catch (SQLException e) {

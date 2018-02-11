@@ -2,8 +2,8 @@ package es.salesianos.model;
 
 public class Console implements IEntity<String>{
 
-	public String console;
-	public String nomCompany;
+	private String console;
+	private String companyName;
 	
 	public String getConsole() {
 		return console;
@@ -13,13 +13,12 @@ public class Console implements IEntity<String>{
 		this.console = console;
 	}
 	
-	public String getNomCompany() {
-		return nomCompany;
+	public String getCompanyName() {
+		return companyName;
 	}
 	
-	public void setNomCompany(String nomCompany) {
-		this.nomCompany = nomCompany;
-	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;	}
 
 	public String getId() {
 		return getConsole();
