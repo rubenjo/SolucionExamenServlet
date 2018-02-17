@@ -20,14 +20,13 @@ public class AltaConsolaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<Console> listAllConsoles = repository.listAllConsoles();
-		req.getSession().setAttribute("consoles", listAllConsoles);
+		req.setAttribute("consoles", listAllConsoles);
 		redirect(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/AltaConsola.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AltaConsola.jsp");
 		dispatcher.forward(req, resp);
 	}
 

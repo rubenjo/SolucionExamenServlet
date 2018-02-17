@@ -20,14 +20,13 @@ public class ListadoVideojuegoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<Videogame> listAllGames = gameRepository.listAllGames();
-		req.getSession().setAttribute("consoles", listAllGames);
+		req.setAttribute("consoles", listAllGames);
 		redirect(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/ListadoVideojuegos.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListadoVideojuegos.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

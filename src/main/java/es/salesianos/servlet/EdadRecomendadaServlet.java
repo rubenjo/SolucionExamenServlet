@@ -22,15 +22,14 @@ public class EdadRecomendadaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<Videogame> listAllAges = gamesRepositorio.listAllGames();
-		req.getSession().setAttribute("games", listAllAges);
+		req.setAttribute("games", listAllAges);
 		redirect(req, resp);
 
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/ListadoEdadServlet.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListadoEdadServlet.jsp");
 		dispatcher.forward(req, resp);
 	}
 

@@ -20,14 +20,13 @@ public class ListadoConsolaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<Console> listAllConsoles = consoleRepository.listAllConsoles();
-		req.getSession().setAttribute("consoles", listAllConsoles);
+		req.setAttribute("consoles", listAllConsoles);
 		redirect(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/ListadoConsola.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListadoConsola.jsp");
 		dispatcher.forward(req, resp);
 	}
 

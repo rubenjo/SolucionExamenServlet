@@ -21,7 +21,7 @@ public class ListadoVideojuegosMarca extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Optional<Videogame> searchAllMarcs=juegosRepository.search(console);
-		req.getSession().setAttribute("consoles", searchAllMarcs);
+		req.setAttribute("consoles", searchAllMarcs);
 		redirect(req,resp);
 	}
 	

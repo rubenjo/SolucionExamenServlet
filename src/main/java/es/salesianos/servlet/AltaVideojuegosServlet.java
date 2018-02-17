@@ -20,14 +20,13 @@ public class AltaVideojuegosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<Videogame> listAllGames = repository.listAllGames();
-		req.getSession().setAttribute("games", listAllGames);
+		req.setAttribute("games", listAllGames);
 		redirect(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/AltaVideojuego.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AltaVideojuego.jsp");
 		dispatcher.forward(req, resp);
 	}
 

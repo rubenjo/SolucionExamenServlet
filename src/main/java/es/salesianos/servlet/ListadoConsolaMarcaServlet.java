@@ -22,14 +22,13 @@ public class ListadoConsolaMarcaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		Optional<Console> listAllMarcs = consoleRepository.search(empresa);
-		req.getSession().setAttribute("consoles", listAllMarcs);
+		req.setAttribute("consoles", listAllMarcs);
 		redirect(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/ListadoConsolasMarcas.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListadoConsolasMarcas.jsp");
 		dispatcher.forward(req, resp);
 	}
 
