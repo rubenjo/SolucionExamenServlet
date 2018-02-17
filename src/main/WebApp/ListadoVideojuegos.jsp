@@ -7,7 +7,7 @@
 <title>Listado videojuegos</title>
 </head>
 <body>
-	<form action="listadoVideojuegos" method="post">
+	<form action="gameRegister" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 	<table border="1">
@@ -22,11 +22,11 @@
 		<tbody>
 			<c:forEach var="game" items="${games}">
 				<tr>
-					<td><c:out value="${game.titulo}" /></td>
-					<td><c:out value="${game.edadRecomendada}" /></td>
-					<td><c:out value="${game.fechaLanzamiento}" /></td>
-					<td><c:out value="${game.nom_Consola}" /></td>
-					<td><a href="/delete?titulo=${game.titulo}">borrar</a></td>
+					<td><c:out value="${game.tittle}" /></td>
+					<td><c:out value="${game.age}" /></td>
+					<td><c:out value="${game.date}" /></td>
+					<td><c:out value="${game.consoleName}" /></td>
+					<td><a href="/delete?titulo=${game.tittle}">borrar</a></td>
 					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
@@ -34,7 +34,7 @@
 	</table>
 	<select>
 		<c:forEach var="game" items="${games}">
-			<option value="${game.titulo}">${game.titulo}</option>
+			<option value="${game.tittle}">${game.tittle}</option>
 		</c:forEach>
 	</select>
 </body>

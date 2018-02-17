@@ -7,7 +7,7 @@
 <title>Listado Consolas</title>
 </head>
 <body>
-	<form action="listadoConsola" method="post">
+	<form action="consoleList" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 	<table border="1">
@@ -18,19 +18,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="consola" items="${consolas}">
+			<c:forEach var="console" items="${consoles}">
 				<tr>
-					<td><c:out value="${consola.consola}" /></td>
-					<td><c:out value="${consola.nom_Empresa}" /></td>
-					<td><a href="/delete?consola=${consola.consola}">borrar</a></td>
+					<td><c:out value="${console.console}" /></td>
+					<td><c:out value="${console.companyName}" /></td>
+					<td><a href="/delete?consola=${console.console}">borrar</a></td>
 					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<select>
-		<c:forEach var="consola" items="${consolas}">
-			<option value="${consola.consola}">${consola.consola}</option>
+		<c:forEach var="console" items="${consoles}">
+			<option value="${console.console}">${console.console}</option>
 		</c:forEach>
 	</select>
 </body>

@@ -4,18 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert game</title>
+<title>Alta Videojuego</title>
 </head>
 <body>
-	<form action="altaVideojuego" method="post">
-		<span>titulo:</span> 
-		<input type="text" name="titulo"> <br/>
-		<span>edadRecomendada:</span>
-		<input type="text" name="edadRecomendada"> <br/>
-		<span>nom_Consola:</span>
-		<input type="text" name="nom_Consola"> <br/>
-		<span>fechaLanzamiento:</span> 
-		<input type="text" name="fechaLanzamiento"><br/>
+	<form action="gameRegister" method="post">
+		<span>tittle:</span> 
+		<input type="text" name="tittle"> <br/>
+		<span>age:</span>
+		<input type="text" name="age"> <br/>
+		<span>consoleName:</span>
+		<input type="text" name="consoleName"> <br/>
+		<span>date:</span> 
+		<input type="text" name="date"><br/>
 		<input type="submit">
 	</form>
 </body>

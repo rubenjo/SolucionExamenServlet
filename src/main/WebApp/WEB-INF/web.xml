@@ -12,7 +12,7 @@
 
 	<servlet-mapping>
 		<servlet-name>AltaConsolaServlet</servlet-name>
-		<url-pattern>/altaConsola</url-pattern>
+		<url-pattern>/consoleRegister</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
@@ -26,7 +26,7 @@
 
 	<servlet-mapping>
 		<servlet-name>AltaVideojuegosServlet</servlet-name>
-		<url-pattern>/altaVideojuego</url-pattern>
+		<url-pattern>/gameRegister</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
@@ -40,7 +40,7 @@
 
 	<servlet-mapping>
 		<servlet-name>ListadoConsolaServlet</servlet-name>
-		<url-pattern>listadoConsola</url-pattern>
+		<url-pattern>consoleList</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
@@ -54,7 +54,7 @@
 
 	<servlet-mapping>
 		<servlet-name>ListadoVideojuegoServlet</servlet-name>
-		<url-pattern>listadoVideojuegos</url-pattern>
+		<url-pattern>gamesList</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
@@ -68,7 +68,7 @@
 
 	<servlet-mapping>
 		<servlet-name>ListadoConsolaMarcaServlet</servlet-name>
-		<url-pattern>listadoConsolaMarca</url-pattern>
+		<url-pattern>markConsoleList</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
@@ -82,24 +82,11 @@
 
 	<servlet-mapping>
 		<servlet-name>ListadoVideojuegosMarcaServlet</servlet-name>
-		<url-pattern>listadoVideojuegosMarca</url-pattern>
+		<url-pattern>markGamesList</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>ListadoVideojuegosMarcas.jsp</welcome-file>
 	</welcome-file-list>
 
-	<servlet>
-		<servlet-name>EdadRecomendadaServlet</servlet-name>
-		<servlet-class>es.salesianos.servlet.EdadRecomendadaServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>EdadRecomendadaServlet</servlet-name>
-		<url-pattern>listadoVideojuegosMarca</url-pattern>
-	</servlet-mapping>
-
-	<welcome-file-list>
-		<welcome-file>ListadoVideojuegosMarcas.jsp</welcome-file>
-	</welcome-file-list>
 </web-app>

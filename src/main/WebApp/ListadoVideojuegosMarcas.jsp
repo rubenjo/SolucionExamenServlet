@@ -7,7 +7,7 @@
 <title>Lista Videojuegos Marcas</title>
 </head>
 <body>
-	<form action="listadoVideojuegosMarca" method="post">
+	<form action="markGamesRegister" method="post">
 		<input type="submit" value="ver listado">
 	</form>
 	<table border="1">
@@ -19,20 +19,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="videojuego" var="consola" items="${videojuegos}">
+			<c:forEach var="game" var="consola" items="${games}">
 				<tr>
-					<td><c:out value="${videojuego.titulo}" /></td>
-					<td><c:out value="${videojuego.nom_Consola}" /></td>
-					<td><c:out value="${consola.nom_Empresa}" /></td>
-					<td><a href="/delete?consola=${videojuego.titulo}">borrar</a></td>
+					<td><c:out value="${game.tittle}" /></td>
+					<td><c:out value="${game.consoleName}" /></td>
+					<td><c:out value="${consola.companyName}" /></td>
+					<td><a href="/delete?consola=${game.tittle}">borrar</a></td>
 					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<select>
-		<c:forEach var="videojuego" items="${videojuegos}">
-			<option value="${videojuego.titulo}">${videojuego.titulo}</option>
+		<c:forEach var="game" items="${games}">
+			<option value="${game.tittle}">${game.tittle}</option>
 		</c:forEach>
 	</select>
 </body>

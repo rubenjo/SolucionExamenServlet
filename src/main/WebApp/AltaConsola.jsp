@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registro Consola</title>
+<title>Alta Consola</title>
 </head>
 <body>
-	<form action="altaConsola" method="post">
-		<span>consola:</span> 
-		<input type="text" name="consola"> <br/>
-		<span>nom_Empresa:</span> 
-		<input type="text" name="nom_Empresa"><br/>
+	<form action="consoleRegister" method="post">
+		<span>console:</span> 
+		<input type="text" name="console"> <br/>
+		<span>companyName:</span> 
+		<input type="text" name="companyName"><br/>
 		<input type="submit">
 	</form>
 </body>
