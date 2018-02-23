@@ -15,12 +15,12 @@ import es.salesianos.repository.VideogameRepository;
 
 public class ListadoVideojuegosMarca extends HttpServlet{
 	
-	VideogameRepository juegosRepository=new VideogameRepository();
+	VideogameRepository gameRepositoy=new VideogameRepository();
 	
 	Console console=new Console();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Optional<Videogame> searchAllMarcs=juegosRepository.search(console);
+		Optional<Videogame> searchAllMarcs=gameRepositoy.search(console);
 		req.setAttribute("consoles", searchAllMarcs);
 		redirect(req,resp);
 	}
@@ -28,6 +28,5 @@ public class ListadoVideojuegosMarca extends HttpServlet{
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ListadoVideojuegosMarcas.jsp");
 		dispatcher.forward(req, resp);
-		req.getParameter("edadRecomendada");
 	}
 }

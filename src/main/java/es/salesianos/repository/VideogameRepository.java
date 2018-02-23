@@ -19,15 +19,15 @@ public class VideogameRepository {
 
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
-	public void insertar(Videogame videogameFormulary) {
+	public void insertar(Videogame videogameForm) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO VIDEOGAMES(tittle,age,nomConsole,date) VALUES(?,?,?,?)");
-			preparedStatement.setString(1, videogameFormulary.getTittle());
-			preparedStatement.setString(2, videogameFormulary.getAge());
-			preparedStatement.setString(3, videogameFormulary.getNomConsole());
-			preparedStatement.setDate(4, new Date(videogameFormulary.getDate().getTime()));
+			preparedStatement = conn.prepareStatement("INSERT INTO VIDEOGAME(tittle,age,nomConsole,date) VALUES(?,?,?,?)");
+			preparedStatement.setString(1, videogameForm.getTittle());
+			preparedStatement.setString(2, videogameForm.getAge());
+			preparedStatement.setString(3, videogameForm.getNomConsole());
+			preparedStatement.setDate(4, new Date(videogameForm.getDate().getTime()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -37,15 +37,15 @@ public class VideogameRepository {
 		}
 	}
 
-	public void update(Videogame videogameFormulary) {
+	public void update(Videogame videogameForm) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("UPDATE VIDEOGAMES SET age=?, nomConsole=?, date=? WHERE tittle=?");
-			preparedStatement.setString(1, videogameFormulary.getAge());
-			preparedStatement.setString(2, videogameFormulary.getNomConsole());
-			preparedStatement.setDate(3, new Date(videogameFormulary.getDate().getTime()));
-			preparedStatement.setString(4, videogameFormulary.getTittle());
+			preparedStatement = conn.prepareStatement("UPDATE VIDEOGAME SET age=?, nomConsole=?, date=? WHERE tittle=?");
+			preparedStatement.setString(1, videogameForm.getAge());
+			preparedStatement.setString(2, videogameForm.getNomConsole());
+			preparedStatement.setDate(3, new Date(videogameForm.getDate().getTime()));
+			preparedStatement.setString(4, videogameForm.getTittle());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -61,7 +61,7 @@ public class VideogameRepository {
 		Connection conn = connection.open(jdbcUrl);
 		Videogame game = new Videogame();
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM VIDEOGAMES INNER JOIN CONSOLES ON VIDEOGAMES.nomConsole=CONSOLES.console WHERE CONSOLES.nomCompany=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM VIDEOGAME INNER JOIN CONSOLES ON VIDEOGAMES.nomConsole=CONSOLES.console WHERE CONSOLES.nomCompany=?");
 			preparedStatement.setString(1, console.getCompanyName());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
@@ -83,15 +83,15 @@ public class VideogameRepository {
 		ResultSet resultSet = null;
 		Statement statement = null;
 		Connection conn = connection.open(jdbcUrl);
-		Videogame games = new Videogame();
+		Videogame game = new Videogame();
 		try {
 			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM VIDEOJUEGOS");
+			resultSet = statement.executeQuery("SELECT * FROM VIDEOGAME");
 			while (resultSet.next()) {
-				games.setTittle(resultSet.getString("titulo"));
-				games.setAge(resultSet.getString("edadRecomendada"));
-				games.setDate(resultSet.getDate("fechaLanzamiento"));
-				games.setNomConsole(resultSet.getString("nom_Consola"));
+				game.setTittle(resultSet.getString("titulo"));
+				game.setAge(resultSet.getString("edadRecomendada"));
+				game.setDate(resultSet.getDate("fechaLanzamiento"));
+				game.setNomConsole(resultSet.getString("nom_Consola"));
 			}
 
 		} catch (SQLException e) {

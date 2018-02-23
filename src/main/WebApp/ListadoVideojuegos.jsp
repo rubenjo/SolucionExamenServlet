@@ -14,8 +14,8 @@
 		<thead>
 			<tr>
 				<td>Titulo</td>
-				<td>Edad_Recomendada</td>
-				<td>Fecha_Lanzamiento</td>
+				<td>Edad Recomendada</td>
+				<td>Fecha Lanzamiento</td>
 				<td>Consola</td>
 			</tr>
 		</thead>

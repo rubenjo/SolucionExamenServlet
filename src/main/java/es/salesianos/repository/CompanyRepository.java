@@ -17,13 +17,13 @@ public class CompanyRepository {
 	AbstractConnection connection;
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
-	public void insert(Company companyFormulary) {
+	public void insert(Company companyForm) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO COMPANIES (company,dateCreation) VALUES(?,?)");
-			preparedStatement.setString(1, companyFormulary.getCompany());
-			preparedStatement.setDate(2, new Date(companyFormulary.getDateCreation().getTime()));
+			preparedStatement = conn.prepareStatement("INSERT INTO COMPANY (company,dateCreation) VALUES(?,?)");
+			preparedStatement.setString(1, companyForm.getCompany());
+			preparedStatement.setDate(2, new Date(companyForm.getDateCreation().getTime()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -33,13 +33,13 @@ public class CompanyRepository {
 		connection.close(conn);
 	}
 
-	public void update(Company companyFormulary) {
+	public void update(Company companyForm) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("UPDATE COMPANIES SET dateCreation=? WHERE company=?");
-			preparedStatement.setDate(1, new Date(companyFormulary.getDateCreation().getTime()));
-			preparedStatement.setString(2, companyFormulary.getCompany());
+			preparedStatement = conn.prepareStatement("UPDATE COMPANY SET dateCreation=? WHERE company=?");
+			preparedStatement.setDate(1, new Date(companyForm.getDateCreation().getTime()));
+			preparedStatement.setString(2, companyForm.getCompany());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -55,7 +55,7 @@ public class CompanyRepository {
 		Connection conn = connection.open(jdbcUrl);
 		Company company = new Company();
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM COMPANIES WHERE company=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM COMPANY WHERE company=?");
 			preparedStatement.setString(1, comp.getCompany());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
@@ -79,7 +79,7 @@ public class CompanyRepository {
 		Company company = new Company();
 		try {
 			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM VIDEOJUEGOS");
+			resultSet = statement.executeQuery("SELECT * FROM GAME");
 			while (resultSet.next()) {
 				company.setCompany(resultSet.getString("empresa"));
 				company.setDateCreation(resultSet.getDate("fechaCreacion"));

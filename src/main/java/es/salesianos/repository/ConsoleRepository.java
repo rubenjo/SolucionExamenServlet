@@ -18,13 +18,13 @@ public class ConsoleRepository {
 
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
-	public void insert(Console consoleFormulary) {
+	public void insert(Console consoleForm) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLES(console,nomCompany) VALUES(?,?)");
-			preparedStatement.setString(1, consoleFormulary.getConsole());
-			preparedStatement.setString(2, consoleFormulary.getCompanyName());
+			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLE(console,nomCompany) VALUES(?,?)");
+			preparedStatement.setString(1, consoleForm.getConsole());
+			preparedStatement.setString(2, consoleForm.getCompanyName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -34,14 +34,14 @@ public class ConsoleRepository {
 		connection.close(conn);
 	}
 
-	public void update(Console consoleFormulary) {
+	public void update(Console consoleForm) {
 		Connection conn = connection.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("UPDATE CONSOLES SET console=?, nomCompany=? WHERE id=?");
-			preparedStatement.setString(1, consoleFormulary.getConsole());
-			preparedStatement.setString(2, consoleFormulary.getCompanyName());
-			preparedStatement.setString(3, consoleFormulary.getId());
+			preparedStatement = conn.prepareStatement("UPDATE CONSOLE SET console=?, nomCompany=? WHERE id=?");
+			preparedStatement.setString(1, consoleForm.getConsole());
+			preparedStatement.setString(2, consoleForm.getCompanyName());
+			preparedStatement.setString(3, consoleForm.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -58,7 +58,7 @@ public class ConsoleRepository {
 		Console consol = new Console();
 		try {
 			conn = connection.open(jdbcUrl);
-			preparedStatement = conn.prepareStatement("SELECT * FROM CONSOLES WHERE console=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM CONSOLE WHERE console=?");
 			preparedStatement.setString(1, console.getConsole());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
@@ -76,7 +76,7 @@ public class ConsoleRepository {
 	}
 
 	public List<Console> listAllConsoles() {
-		List<Console> listaConsolas = new ArrayList<Console>();
+		List<Console> listConsole = new ArrayList<Console>();
 		ResultSet resultSet = null;
 		Connection conn = null;
 		Statement statement = null;
@@ -84,12 +84,12 @@ public class ConsoleRepository {
 		try {
 			conn = connection.open(jdbcUrl);
 			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM CONSOLES");
+			resultSet = statement.executeQuery("SELECT * FROM CONSOLE");
 
 			while (resultSet.next()) {
 				console.setConsole(resultSet.getString("console"));
 				console.setCompanyName(resultSet.getString("nomCompany"));
-				listaConsolas.add(console);
+				listConsole.add(console);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,6 +98,6 @@ public class ConsoleRepository {
 			connection.close(statement);
 			connection.close(conn);
 		}
-		return listaConsolas;
+		return listConsole;
 	}
 }
