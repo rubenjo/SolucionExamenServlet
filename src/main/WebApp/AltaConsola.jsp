@@ -8,9 +8,9 @@
 </head>
 <body>
 	<form action="consoleRegister" method="post">
-		<span>console:</span> 
+		<span>name:</span> 
 		<input type="text" name="console"> <br/>
-		<span>companyName:</span> 
+		<span>company:</span> 
 		<input type="text" name="companyName"><br/>
 		<input type="submit">
 	</form>

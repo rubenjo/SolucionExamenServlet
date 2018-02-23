@@ -10,11 +10,11 @@
 	<form action="gameRegister" method="post">
 		<span>tittle:</span> 
 		<input type="text" name="tittle"> <br/>
-		<span>age:</span>
+		<span>recommendedAge:</span>
 		<input type="text" name="age"> <br/>
 		<span>consoleName:</span>
 		<input type="text" name="consoleName"> <br/>
-		<span>date:</span> 
+		<span>releaseDate:</span> 
 		<input type="text" name="date"><br/>
 		<input type="submit">
 	</form>

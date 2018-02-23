@@ -20,11 +20,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="game" items="${games}">
+			<c:forEach var="game" items="${listAllGames}">
 				<tr>
 					<td><c:out value="${game.tittle}" /></td>
-					<td><c:out value="${game.age}" /></td>
-					<td><c:out value="${game.date}" /></td>
+					<td><c:out value="${game.recommendedAge}" /></td>
+					<td><c:out value="${game.releaseDate}" /></td>
 					<td><c:out value="${game.consoleName}" /></td>
 					<td><a href="/delete?titulo=${game.tittle}">borrar</a></td>
 					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
@@ -33,7 +33,7 @@
 		</tbody>
 	</table>
 	<select>
-		<c:forEach var="game" items="${games}">
+		<c:forEach var="game" items="${listAllGames}">
 			<option value="${game.tittle}">${game.tittle}</option>
 		</c:forEach>
 	</select>

@@ -2,30 +2,30 @@ package es.salesianos.model;
 
 public class Console implements IEntity<String>{
 
-	private String console;
-	private String companyName;
+	private String name;
+	private String company;
 	
-	public String getConsole() {
-		return console;
+	public String getName() {
+		return name;
 	}
 	
-	public void setConsole(String console) {
-		this.console = console;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public String getCompanyName() {
-		return companyName;
+	public String getCompany() {
+		return company;
 	}
 	
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;	}
+	public void setCompany(String company) {
+		this.company = company;	}
 
 	public String getId() {
-		return getConsole();
+		return getName();
 	}
 
 	public void setId(String id) {
-		setConsole(id);
+		setName(id);
 		
 	}
 	

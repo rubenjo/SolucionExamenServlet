@@ -7,33 +7,34 @@
 <title>Lista Videojuegos Marcas</title>
 </head>
 <body>
-	<form action="markGamesRegister" method="post">
-		<input type="submit" value="ver listado">
-	</form>
-	<table border="1">
-		<thead>
-			<tr>
-				<td>Titulo</td>
-				<td>Consola</td>
-				<td>Empresa</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="game" var="consola" items="${games}">
-				<tr>
-					<td><c:out value="${game.tittle}" /></td>
-					<td><c:out value="${game.consoleName}" /></td>
-					<td><c:out value="${consola.companyName}" /></td>
-					<td><a href="/delete?consola=${game.tittle}">borrar</a></td>
-					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<select>
-		<c:forEach var="game" items="${games}">
-			<option value="${game.tittle}">${game.tittle}</option>
-		</c:forEach>
-	</select>
+	<form action="listVideogamesByConsole" method="post">
++		<input type="submit" value="Mostrar lista"/><br/>
++		<span>SELECCIONA LA CONSOLA:</span><br/>
++		<select name="selectConsole">
++			<c:forEach var="console" items="${listAllConsoles}">
++				<option value="<c:out value="${console.name}"/>"><c:out value="${console.name}" /></option>
++			</c:forEach>
++		</select>
++	</form>
++	<br>
++	
++	<table border="1">
++		<thead>
++			<tr>
++				<td>Nombre</td>
++				<td>Fecha de creacion</td>
++			</tr>
++		</thead>
++		<tbody>
++			<c:forEach var="videogame" items="${listAllVideogames}">
++				<tr>
++					<td><c:out value="${videogame.tittle}" /></td>
++					<td><c:out value="${videogame.recommendedAge}" /></td>
++					<td><c:out value="${videogame.releaseDate}" /></td>
++					<td><c:out value="${videogame.consoleName}" /></td>
++				</tr>
++			</c:forEach>
++		</tbody>
++	</table>
 </body>
 </html>

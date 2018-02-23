@@ -18,10 +18,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="console" items="${consoles}">
+			<c:forEach var="console" items="${listAllConsoles}">
 				<tr>
-					<td><c:out value="${console.console}" /></td>
-					<td><c:out value="${console.companyName}" /></td>
+					<td><c:out value="${console.name}" /></td>
+					<td><c:out value="${console.company}" /></td>
 					<td><a href="/delete?consola=${console.console}">borrar</a></td>
 					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
@@ -29,8 +29,8 @@
 		</tbody>
 	</table>
 	<select>
-		<c:forEach var="console" items="${consoles}">
-			<option value="${console.console}">${console.console}</option>
+		<c:forEach var="console" items="${listAllConsoles}">
+			<option value="${console.name}">${console.name}</option>
 		</c:forEach>
 	</select>
 </body>

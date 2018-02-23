@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Company implements IEntity<String>{
 
-	private String company;
+	private String name;
 	private Date dateCreation;
 	
-	public String getCompany() {
-		return company;
+	public String getName() {
+		return name;
 	}
 	
-	public void setCompany(String company) {
-		this.company = company;
+	public void setName(String company) {
+		this.name = company;
 	}
 	
 	public Date getDateCreation() {
@@ -24,11 +24,11 @@ public class Company implements IEntity<String>{
 	}
 
 	public String getId() {
-		return getCompany();
+		return getName();
 	}
 
 	public void setId(String id) {
-		setCompany(id);
+		setName(id);
 	}
 	
 }

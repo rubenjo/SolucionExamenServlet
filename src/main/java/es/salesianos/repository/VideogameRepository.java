@@ -25,9 +25,9 @@ public class VideogameRepository {
 		try {
 			preparedStatement = conn.prepareStatement("INSERT INTO VIDEOGAME(tittle,age,nomConsole,date) VALUES(?,?,?,?)");
 			preparedStatement.setString(1, videogameForm.getTittle());
-			preparedStatement.setString(2, videogameForm.getAge());
-			preparedStatement.setString(3, videogameForm.getNomConsole());
-			preparedStatement.setDate(4, new Date(videogameForm.getDate().getTime()));
+			preparedStatement.setString(2, videogameForm.getRecommendedAge());
+			preparedStatement.setString(3, videogameForm.getConsoleName());
+			preparedStatement.setDate(4, new Date(videogameForm.getReleaseDate().getTime()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -42,9 +42,9 @@ public class VideogameRepository {
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn.prepareStatement("UPDATE VIDEOGAME SET age=?, nomConsole=?, date=? WHERE tittle=?");
-			preparedStatement.setString(1, videogameForm.getAge());
-			preparedStatement.setString(2, videogameForm.getNomConsole());
-			preparedStatement.setDate(3, new Date(videogameForm.getDate().getTime()));
+			preparedStatement.setString(1, videogameForm.getRecommendedAge());
+			preparedStatement.setString(2, videogameForm.getConsoleName());
+			preparedStatement.setDate(3, new Date(videogameForm.getReleaseDate().getTime()));
 			preparedStatement.setString(4, videogameForm.getTittle());
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,12 +62,12 @@ public class VideogameRepository {
 		Videogame game = new Videogame();
 		try {
 			preparedStatement = conn.prepareStatement("SELECT * FROM VIDEOGAME INNER JOIN CONSOLES ON VIDEOGAMES.nomConsole=CONSOLES.console WHERE CONSOLES.nomCompany=?");
-			preparedStatement.setString(1, console.getCompanyName());
+			preparedStatement.setString(1, console.getCompany());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				game.setTittle(resultSet.getString("tittle"));
-				game.setAge(resultSet.getString("age"));
-				game.setDate(resultSet.getDate("date"));
+				game.setRecommendedAge(resultSet.getString("age"));
+				game.setReleaseDate(resultSet.getDate("date"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,9 +89,9 @@ public class VideogameRepository {
 			resultSet = statement.executeQuery("SELECT * FROM VIDEOGAME");
 			while (resultSet.next()) {
 				game.setTittle(resultSet.getString("titulo"));
-				game.setAge(resultSet.getString("edadRecomendada"));
-				game.setDate(resultSet.getDate("fechaLanzamiento"));
-				game.setNomConsole(resultSet.getString("nom_Consola"));
+				game.setRecommendedAge(resultSet.getString("edadRecomendada"));
+				game.setReleaseDate(resultSet.getDate("fechaLanzamiento"));
+				game.setConsoleName(resultSet.getString("nom_Consola"));
 			}
 
 		} catch (SQLException e) {

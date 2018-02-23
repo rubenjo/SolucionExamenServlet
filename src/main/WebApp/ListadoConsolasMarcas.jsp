@@ -7,31 +7,31 @@
 <title>Lista Consolas Marca</title>
 </head>
 <body>
-	<form action="markConsoleList" method="post">
-		<input type="submit" value="ver listado">
+	<form action="listConsolesByCompany" method="post">
++		<input type="submit" value="Mostrar lista"/><br/>
++		
++		<select name="selectCompany">
++			<c:forEach var="company" items="${listAllCompanies}">
++				<option value="<c:out value="${company.name}" />"><c:out value="${company.name}" /></option>
++			</c:forEach>
++		</select>
 	</form>
-	<table border="1">
-		<thead>
-			<tr>
-				<td>Consola</td>
-				<td>Empresa</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="console" items="${consoles}">
-				<tr>
-					<td><c:out value="${console.console}" /></td>
-					<td><c:out value="${console.companyName}" /></td>
-					<td><a href="/delete?consola=${console.console}">borrar</a></td>
-					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<select>
-		<c:forEach var="console" items="${consoles}">
-			<option value="${console.console}">${console.console}</option>
-		</c:forEach>
-	</select>
++	<br/>
++	<table border="1">
++		<thead>
++			<tr>
++				<td>Nombre</td>
++				<td>Empresa</td>
++			</tr>
++		</thead>
++		<tbody>
++			<c:forEach var="console" items="${listAllConsoles}">
++				<tr>
++					<td><c:out value="${console.name}" /></td>
++					<td><c:out value="${console.company.name}" /></td>
++				</tr>
++			</c:forEach>
++		</tbody>
++	</table>
 </body>
 </html>

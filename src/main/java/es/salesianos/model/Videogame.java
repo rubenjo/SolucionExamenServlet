@@ -5,9 +5,9 @@ import java.util.Date;
 public class Videogame implements IEntity<String>{
 
 	private String tittle;
-	private String age;
-	private Date date;
-	private String nomConsole;
+	private String recommendedAge;
+	private Date releaseDate;
+	private String consoleName;
 	
 	public String getTittle() {
 		return tittle;
@@ -17,28 +17,28 @@ public class Videogame implements IEntity<String>{
 		this.tittle = titulo;
 	}
 	
-	public String getAge() {
-		return age;
+	public String getRecommendedAge() {
+		return recommendedAge;
 	}
 	
-	public void setAge(String age) {
-		this.age = age;
+	public void setRecommendedAge(String recommendedAge) {
+		this.recommendedAge = recommendedAge;
 	}
 	
-	public Date getDate() {
-		return date;
+	public Date getReleaseDate() {
+		return releaseDate;
 	}
 	
-	public void setDate(Date date) {
-		this.date = date;
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	
-	public String getNomConsole() {
-		return nomConsole;
+	public String getConsoleName() {
+		return consoleName;
 	}
 	
-	public void setNomConsole(String nomConsole) {
-		this.nomConsole = nomConsole;
+	public void setConsoleName(String consoleName) {
+		this.consoleName = consoleName;
 	}
 
 	public String getId() {

@@ -15,21 +15,18 @@ import es.salesianos.repository.VideogameRepository;
 public class EdadRecomendadaServlet extends HttpServlet {
 
 	VideogameRepository gamesRepository = new VideogameRepository();
-
 	Videogame games = new Videogame();
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Videogame> listAllAges = gamesRepository.listAllGames();
 		req.setAttribute("games", listAllAges);
 		redirect(req, resp);
 
 	}
 
-	protected void redirect(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListadoEdadServlet.jsp");
+	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListadoEdadRecomendada.jsp");
 		dispatcher.forward(req, resp);
 	}
 
