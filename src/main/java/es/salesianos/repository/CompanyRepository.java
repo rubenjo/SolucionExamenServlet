@@ -29,8 +29,8 @@ public class CompanyRepository {
 			throw new RuntimeException(e);
 		} finally {
 			connection.close(preparedStatement);
+			connection.close(conn);
 		}
-		connection.close(conn);
 	}
 
 	public void update(Company companyForm) {
@@ -45,8 +45,8 @@ public class CompanyRepository {
 			throw new RuntimeException(e);
 		} finally {
 			connection.close(preparedStatement);
+			connection.close(conn);
 		}
-		connection.close(conn);
 	}
 
 	public Optional<Company> search(Company comp) {

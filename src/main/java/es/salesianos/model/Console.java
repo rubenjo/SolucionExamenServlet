@@ -18,7 +18,8 @@ public class Console implements IEntity<String>{
 	}
 	
 	public void setCompany(String company) {
-		this.company = company;	}
+		this.company = company;	
+	}
 
 	public String getId() {
 		return getName();

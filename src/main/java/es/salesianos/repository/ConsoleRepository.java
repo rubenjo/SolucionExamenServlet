@@ -30,8 +30,8 @@ public class ConsoleRepository {
 			throw new RuntimeException(e);
 		} finally {
 			connection.close(preparedStatement);
+			connection.close(conn);
 		}
-		connection.close(conn);
 	}
 
 	public void update(Console consoleForm) {
@@ -47,8 +47,8 @@ public class ConsoleRepository {
 			throw new RuntimeException(e);
 		} finally {
 			connection.close(preparedStatement);
+			connection.close(conn);
 		}
-		connection.close(conn);
 	}
 
 	public Optional<Console> search(Console console) {
