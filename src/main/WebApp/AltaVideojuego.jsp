@@ -8,8 +8,8 @@
 </head>
 <body>
 	<form action="gameRegister" method="post">
-		<span>tittle:</span> 
-		<input type="text" name="tittle"> <br/>
+		<span>title:</span> 
+		<input type="text" name="title"> <br/>
 		<span>Recommended Age:</span>
 		<input type="text" name="recommendedAge"> <br/>
 		<span>Console Name:</span>

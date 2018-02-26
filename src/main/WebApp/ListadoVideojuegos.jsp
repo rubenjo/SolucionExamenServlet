@@ -22,7 +22,7 @@
 		<tbody>
 			<c:forEach var="game" items="${listAllGames}">
 				<tr>
-					<td><c:out value="${game.tittle}" /></td>
+					<td><c:out value="${game.title}" /></td>
 					<td><c:out value="${game.recommendedAge}" /></td>
 					<td><c:out value="${game.releaseDate}" /></td>
 					<td><c:out value="${game.consoleName}" /></td>

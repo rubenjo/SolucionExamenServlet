@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class Videogame implements IEntity<String>{
 
-	private String tittle;
+	private String title;
 	private String recommendedAge;
 	private Date releaseDate;
 	private String consoleName;
 	
-	public String getTittle() {
-		return tittle;
+	public String getTitle() {
+		return title;
 	}
 	
-	public void setTittle(String titulo) {
-		this.tittle = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	public String getRecommendedAge() {
@@ -42,11 +42,11 @@ public class Videogame implements IEntity<String>{
 	}
 
 	public String getId() {
-		return getTittle();
+		return getTitle();
 	}
 
 	public void setId(String id) {
-		setTittle(id);
+		setTitle(id);
 	}
 	
 }

@@ -14,8 +14,8 @@ import es.salesianos.model.Videogame;
 @Repository
 public class VideogameRepository {
 
-	private static final String INSERT = "INSERT INTO VIDEOGAME (tittle,recommendedAge,releaseDate,consoleName) VALUES ( :tittle, :recommendedAge, :releaseDate, :consoleName)";
-	private static final String DELETE = "DELETE FROM VIDEOGAME WHERE tittle = ?";
+	private static final String INSERT = "INSERT INTO VIDEOGAME (title,recommendedAge,releaseDate,consoleName) VALUES ( :title, :recommendedAge, :releaseDate, :consoleName)";
+	private static final String DELETE = "DELETE FROM VIDEOGAME WHERE title = ?";
 	private static final String SELECT = "SELECT * FROM VIDEOGAME";
 
 	@Autowired
@@ -26,16 +26,16 @@ public class VideogameRepository {
 
 	public void insert(Videogame videogame) {
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("tittle", videogame.getTittle());
+		params.addValue("title", videogame.getTitle());
 		params.addValue("recommendedAge", videogame.getRecommendedAge());
 		params.addValue("releaseDate", videogame.getReleaseDate());
 		params.addValue("consoleName", videogame.getConsoleName());
 		namedJdbcTemplate.update(INSERT, params);
 	}
 
-	public void delete(String tittle) {
+	public void delete(String title) {
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("tittle", tittle);
+		params.addValue("title", title);
 		namedJdbcTemplate.update(DELETE, params);
 	}
 
