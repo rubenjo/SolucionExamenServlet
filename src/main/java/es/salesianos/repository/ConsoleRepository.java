@@ -1,103 +1,73 @@
 package es.salesianos.repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-import es.salesianos.connection.AbstractConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
 import es.salesianos.model.Console;
 
 public class ConsoleRepository {
 
-	AbstractConnection connection;
-
-	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
-
+	private static final String INSERT = "INSERT INTO CONSOLE (name,company)" + "VALUES ( :name, :company)";
+	private static final String DELETE = "DELETE FROM CONSOLE WHERE name = :name";
+	private static final String SELECT = "SELECT * FROM CONSOLE";
+	private static final String SELECTBYCOMPANY = "SELECT * FROM CONSOLE WHERE company = :name";
+	
+	@Autowired
+	private JdbcTemplate template;
+	
+	@Autowired
+	private NamedParameterJdbcTemplate namedJdbcTemplate;
+	
 	public void insert(Console consoleForm) {
-		Connection conn = connection.open(jdbcUrl);
-		PreparedStatement preparedStatement = null;
-		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLE(console,nomCompany) VALUES(?,?)");
-			preparedStatement.setString(1, consoleForm.getName());
-			preparedStatement.setString(2, consoleForm.getCompany());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			connection.close(preparedStatement);
-			connection.close(conn);
-		}
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("name", consoleForm.getName());
+		params.addValue("companyId", consoleForm.getCompany());
+		namedJdbcTemplate.update(INSERT, params);
 	}
-
-	public void update(Console consoleForm) {
-		Connection conn = connection.open(jdbcUrl);
-		PreparedStatement preparedStatement = null;
-		try {
-			preparedStatement = conn.prepareStatement("UPDATE CONSOLE SET console=?, nomCompany=? WHERE id=?");
-			preparedStatement.setString(1, consoleForm.getName());
-			preparedStatement.setString(2, consoleForm.getCompany());
-			preparedStatement.setString(3, consoleForm.getId());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			connection.close(preparedStatement);
-			connection.close(conn);
-		}
-	}
-
-	public Optional<Console> search(Console console) {
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		Connection conn = null;
-		Console consol = new Console();
-		try {
-			conn = connection.open(jdbcUrl);
-			preparedStatement = conn.prepareStatement("SELECT * FROM CONSOLE WHERE console=?");
-			preparedStatement.setString(1, console.getName());
-			resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				consol.setName(resultSet.getString("console"));
-				consol.setName(resultSet.getString("nomCompany"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			connection.close(preparedStatement);
-			connection.close(conn);
-		}
-		return Optional.ofNullable(consol);
+	
+	public void delete(String name) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("name", name);
+		namedJdbcTemplate.update(DELETE, params);
 	}
 
 	public List<Console> listAllConsoles() {
-		List<Console> listConsole = new ArrayList<Console>();
-		ResultSet resultSet = null;
-		Connection conn = null;
-		Statement statement = null;
-		Console console = new Console();
-		try {
-			conn = connection.open(jdbcUrl);
-			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM CONSOLE");
+		List<Console> consoles = template.query(SELECT, new BeanPropertyRowMapper(Console.class));
+		return consoles;
+	}
 
-			while (resultSet.next()) {
-				console.setName(resultSet.getString("console"));
-				console.setCompany(resultSet.getString("nomCompany"));
-				listConsole.add(console);
+	public List<Console> listAllByCompany(int idCompany){
+		List<Console> consoles = new ArrayList<Console>();
+		List<Map<String, Object>> rows = namedJdbcTemplate.queryForList(SELECTBYCOMPANY, new MapSqlParameterSource("id", String.valueOf(idCompany)));		
+			for(Map row : rows){
+				Console console = new Console();
+				console.setName((String)(row.get("name")));
+				console.setCompany((String)(row.get("company")));
+				consoles.add(console);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			connection.close(statement);
-			connection.close(conn);
-		}
-		return listConsole;
+		return consoles;	
+	}
+	
+	public JdbcTemplate getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+
+	public NamedParameterJdbcTemplate getNamedJdbcTemplate() {
+		return namedJdbcTemplate;
+	}
+
+	public void setNamedJdbcTemplate(NamedParameterJdbcTemplate namedJdbcTemplate) {
+		this.namedJdbcTemplate = namedJdbcTemplate;
 	}
 }
