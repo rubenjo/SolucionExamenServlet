@@ -27,7 +27,6 @@
 					<td><c:out value="${game.releaseDate}" /></td>
 					<td><c:out value="${game.consoleName}" /></td>
 					<td><a href="/delete?titulo=${game.tittle}">borrar</a></td>
-					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
 		</tbody>

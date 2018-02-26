@@ -23,7 +23,6 @@
 					<td><c:out value="${console.name}" /></td>
 					<td><c:out value="${console.company}" /></td>
 					<td><a href="/delete?consola=${console.console}">borrar</a></td>
-					<jsp:include page="/confirmation.jsp" flush="true"></jsp:include>
 				</tr>
 			</c:forEach>
 		</tbody>
