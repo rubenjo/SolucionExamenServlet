@@ -12,7 +12,7 @@ import es.salesianos.repository.CompanyRepository;
 public class CompanyService {
 
 	@Autowired
-	private CompanyRepository repository = new CompanyRepository();
+	private CompanyRepository repository;
 
 	public void insert(Company company) {
  		repository.insert(company);

@@ -12,7 +12,7 @@ import es.salesianos.repository.ConsoleRepository;
 public class ConsoleService {
 	
 	@Autowired
-	private ConsoleRepository repository = new ConsoleRepository();
+	private ConsoleRepository repository;
 	
 	public void insert(Console console) {
 		repository.insert(console);

@@ -12,7 +12,7 @@ import es.salesianos.repository.VideogameRepository;
 public class VideogameService {
 
 	@Autowired
- 	private VideogameRepository repository = new VideogameRepository();
+ 	private VideogameRepository repository;
 
  	public void insert(Videogame videogame) {
  		repository.insert(videogame);
